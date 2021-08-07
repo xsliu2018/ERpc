@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NettyRpc.iml" filepath="$PROJECT_DIR$/NettyRpc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/netty-rpc-client/netty-rpc-client.iml" filepath="$PROJECT_DIR$/netty-rpc-client/netty-rpc-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/netty-rpc-common/netty-rpc-common.iml" filepath="$PROJECT_DIR$/netty-rpc-common/netty-rpc-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/netty-rpc-server/netty-rpc-server.iml" filepath="$PROJECT_DIR$/netty-rpc-server/netty-rpc-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/netty-rpc-test/netty-rpc-test.iml" filepath="$PROJECT_DIR$/netty-rpc-test/netty-rpc-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ERpc.iml" filepath="$PROJECT_DIR$/ERpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty-rpc-client/e-rpc-client.iml" filepath="$PROJECT_DIR$/netty-rpc-client/e-rpc-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty-rpc-common/e-rpc-core.iml" filepath="$PROJECT_DIR$/netty-rpc-common/e-rpc-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty-rpc-server/e-rpc-server.iml" filepath="$PROJECT_DIR$/netty-rpc-server/e-rpc-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty-rpc-test/e-rpc-test.iml" filepath="$PROJECT_DIR$/netty-rpc-test/e-rpc-test.iml" />
     </modules>
   </component>
 </project>
