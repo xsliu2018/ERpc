@@ -1,44 +1,20 @@
 package com.netty.rpc.codec;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
- * RPC Response
- *
- * @author luxiaoxun
+ * 服务响应
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/1:25 上午
+ * @author: lxs
  */
+@Data
 public class RpcResponse implements Serializable {
     private static final long serialVersionUID = 8215493329459772524L;
 
     private String requestId;
     private String error;
     private Object result;
-
-    public boolean isError() {
-        return error != null;
-    }
-
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public Object getResult() {
-        return result;
-    }
-
-    public void setResult(Object result) {
-        this.result = result;
-    }
 }

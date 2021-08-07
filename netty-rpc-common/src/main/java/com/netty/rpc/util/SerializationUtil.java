@@ -11,30 +11,23 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Serialization Util（Based on Protostuff）
+ * 序列化工具类
  *
- * @author luxiaoxun
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/2:21 下午
+ * @author: lxs
  */
 public class SerializationUtil {
 
-    private static Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<>();
+    private static final Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<>();
 
-    private static Objenesis objenesis = new ObjenesisStd(true);
+    private static final Objenesis objenesis = new ObjenesisStd(true);
 
     private SerializationUtil() {
     }
 
     @SuppressWarnings("unchecked")
     private static <T> Schema<T> getSchema(Class<T> cls) {
-//        Schema<T> schema = (Schema<T>) cachedSchema.get(cls);
-//        if (schema == null) {
-//            schema = RuntimeSchema.createFrom(cls);
-//            if (schema != null) {
-//                cachedSchema.put(cls, schema);
-//            }
-//        }
-//        return schema;
-        // for thread-safe
         return (Schema<T>) cachedSchema.computeIfAbsent(cls, RuntimeSchema::createFrom);
     }
 

@@ -4,7 +4,7 @@ import com.netty.rpc.codec.RpcRequest;
 import com.netty.rpc.codec.RpcResponse;
 import com.app.test.service.Person;
 import com.app.test.service.HelloServiceImpl;
-import com.netty.rpc.util.JsonUtil;
+import com.netty.rpc.util.JSONUtil;
 import com.netty.rpc.util.SerializationUtil;
 
 import java.util.UUID;
@@ -19,13 +19,13 @@ public class JsonTest {
         response.setError("Error msg");
         System.out.println(response.getRequestId());
 
-        byte[] datas = JsonUtil.serialize(response);
+        byte[] datas = JSONUtil.serialize(response);
         System.out.println("Json byte length: " + datas.length);
 
         byte[] datas2 = SerializationUtil.serialize(response);
         System.out.println("Protobuf byte length: " + datas2.length);
 
-        RpcResponse resp = (RpcResponse) JsonUtil.deserialize(datas, RpcResponse.class);
+        RpcResponse resp = (RpcResponse) JSONUtil.deserialize(datas, RpcResponse.class);
         System.out.println(resp.getRequestId());
     }
 
@@ -39,13 +39,13 @@ public class JsonTest {
         request.setRequestId(UUID.randomUUID().toString());
         System.out.println(request.getRequestId());
 
-        byte[] datas = JsonUtil.serialize(request);
+        byte[] datas = JSONUtil.serialize(request);
         System.out.println("Json byte length: " + datas.length);
 
         byte[] datas2 = SerializationUtil.serialize(request);
         System.out.println("Protobuf byte length: " + datas2.length);
 
-        RpcRequest req = (RpcRequest) JsonUtil.deserialize(datas, RpcRequest.class);
+        RpcRequest req = (RpcRequest) JSONUtil.deserialize(datas, RpcRequest.class);
         System.out.println(req.getRequestId());
     }
 

@@ -5,13 +5,21 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryo.pool.KryoPool;
 import com.netty.rpc.serializer.Serializer;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class KryoSerializer extends Serializer {
-    private KryoPool pool = KryoPoolFactory.getKryoPoolInstance();
+/**
+ * kryo序列化
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/1:19 上午
+ * @author: lxs
+ */
+@Slf4j
+public class KryoSerializer implements Serializer {
+    private final KryoPool pool = KryoPoolFactory.getKryoPoolInstance();
 
     @Override
     public <T> byte[] serialize(T obj) {
@@ -28,7 +36,7 @@ public class KryoSerializer extends Serializer {
             try {
                 byteArrayOutputStream.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                log.error("something goes wrong");
             }
             pool.release(kryo);
         }
@@ -49,7 +57,7 @@ public class KryoSerializer extends Serializer {
             try {
                 byteArrayInputStream.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                log.error("something goes wrong");
             }
             pool.release(kryo);
         }

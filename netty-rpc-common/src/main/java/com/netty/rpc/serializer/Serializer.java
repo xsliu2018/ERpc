@@ -1,7 +1,14 @@
 package com.netty.rpc.serializer;
 
-public abstract class Serializer {
-    public abstract <T> byte[] serialize(T obj);
+/**
+ * 序列化接口
+ *
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/7/4:21 下午
+ * @author: lxs
+ */
+public interface Serializer {
+    <T> byte[] serialize(T obj);
 
-    public abstract <T> Object deserialize(byte[] bytes, Class<T> clazz);
+    <T> Object deserialize(byte[] bytes, Class<T> clazz);
 }

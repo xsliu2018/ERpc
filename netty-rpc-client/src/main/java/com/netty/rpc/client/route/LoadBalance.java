@@ -27,7 +27,7 @@ public interface LoadBalance {
         if (CollectionUtil.isNotEmpty(connectedServerNodes)) {
             for (RpcServerInfo rpcServerInfo : connectedServerNodes.keySet()) {
                 for (RpcServiceInfo serviceInfo : rpcServerInfo.getServiceInfoList()) {
-                    String serviceKey = ServiceUtil.makeServiceKey(serviceInfo.getServiceName(), serviceInfo.getVersion());
+                    String serviceKey = ServiceUtil.generateServiceKey(serviceInfo.getServiceName(), serviceInfo.getVersion());
                     List<RpcServerInfo> rpcServerInfoList = serviceMap.get(serviceKey);
                     if (rpcServerInfoList == null) {
                         rpcServerInfoList = new ArrayList<>();

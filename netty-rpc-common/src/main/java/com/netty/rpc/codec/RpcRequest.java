@@ -1,12 +1,16 @@
 package com.netty.rpc.codec;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
- * RPC Request
- *
- * @author luxiaoxun
+ * 服务请求
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/7/4:21 下午
+ * @author: lxs
  */
+@Data
 public class RpcRequest implements Serializable {
     private static final long serialVersionUID = -2524587347775862771L;
 
@@ -17,51 +21,4 @@ public class RpcRequest implements Serializable {
     private Object[] parameters;
     private String version;
 
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public void setMethodName(String methodName) {
-        this.methodName = methodName;
-    }
-
-    public Class<?>[] getParameterTypes() {
-        return parameterTypes;
-    }
-
-    public void setParameterTypes(Class<?>[] parameterTypes) {
-        this.parameterTypes = parameterTypes;
-    }
-
-    public Object[] getParameters() {
-        return parameters;
-    }
-
-    public void setParameters(Object[] parameters) {
-        this.parameters = parameters;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
 }

@@ -11,10 +11,17 @@ import org.objenesis.ObjenesisStd;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ProtostuffSerializer extends Serializer {
-    private Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<>();
+/**
+ * protobuf序列化
+ *
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/1:19 上午
+ * @author: lxs
+ */
+public class ProtostuffSerializer implements Serializer {
+    private final Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<>();
 
-    private Objenesis objenesis = new ObjenesisStd(true);
+    private final Objenesis objenesis = new ObjenesisStd(true);
 
     @SuppressWarnings("unchecked")
     private <T> Schema<T> getSchema(Class<T> cls) {
@@ -23,6 +30,7 @@ public class ProtostuffSerializer extends Serializer {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> byte[] serialize(T obj) {
         Class<T> cls = (Class<T>) obj.getClass();
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);

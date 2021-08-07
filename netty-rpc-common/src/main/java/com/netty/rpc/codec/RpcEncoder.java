@@ -8,22 +8,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * RPC Encoder
- *
- * @author luxiaoxun
+ * 编码器
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/1:21 上午
+ * @author: lxs
  */
-public class RpcEncoder extends MessageToByteEncoder {
+public class RpcEncoder<E> extends MessageToByteEncoder<E> {
     private static final Logger logger = LoggerFactory.getLogger(RpcEncoder.class);
-    private Class<?> genericClass;
-    private Serializer serializer;
+    private final Class<E> genericClass;
+    private final Serializer serializer;
 
-    public RpcEncoder(Class<?> genericClass, Serializer serializer) {
+    public RpcEncoder(Class<E> genericClass, Serializer serializer) {
         this.genericClass = genericClass;
         this.serializer = serializer;
     }
 
     @Override
-    public void encode(ChannelHandlerContext ctx, Object in, ByteBuf out) throws Exception {
+    public void encode(ChannelHandlerContext ctx, E in, ByteBuf out) throws Exception {
         if (genericClass.isInstance(in)) {
             try {
                 byte[] data = serializer.serialize(in);

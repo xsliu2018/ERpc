@@ -1,6 +1,6 @@
 package com.netty.rpc.client;
 
-import com.netty.rpc.annotation.RpcAutowired;
+import com.netty.rpc.annotation.ServiceConsumer;
 import com.netty.rpc.client.proxy.RpcService;
 import com.netty.rpc.client.proxy.ObjectProxy;
 import com.netty.rpc.client.connection.ConnectionManager;
@@ -19,10 +19,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * RPC Client（Create RPC proxy）
+ * 代理
  *
- * @author luxiaoxun
- * @author g-yu
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/7/6:21 下午
+ * @author: lxs
  */
 public class RpcClient implements ApplicationContextAware, DisposableBean {
     private static final Logger logger = LoggerFactory.getLogger(RpcClient.class);
@@ -40,12 +41,12 @@ public class RpcClient implements ApplicationContextAware, DisposableBean {
         return (T) Proxy.newProxyInstance(
                 interfaceClass.getClassLoader(),
                 new Class<?>[]{interfaceClass},
-                new ObjectProxy<T, P>(interfaceClass, version)
+                new ObjectProxy<T>(interfaceClass, version)
         );
     }
 
-    public static <T, P> RpcService createAsyncService(Class<T> interfaceClass, String version) {
-        return new ObjectProxy<T, P>(interfaceClass, version);
+    public static <T> RpcService createAsyncService(Class<T> interfaceClass, String version) {
+        return new ObjectProxy<>(interfaceClass, version);
     }
 
     public static void submit(Runnable task) {
@@ -71,9 +72,9 @@ public class RpcClient implements ApplicationContextAware, DisposableBean {
             Field[] fields = bean.getClass().getDeclaredFields();
             try {
                 for (Field field : fields) {
-                    RpcAutowired rpcAutowired = field.getAnnotation(RpcAutowired.class);
-                    if (rpcAutowired != null) {
-                        String version = rpcAutowired.version();
+                    ServiceConsumer serviceConsumer = field.getAnnotation(ServiceConsumer.class);
+                    if (serviceConsumer != null) {
+                        String version = serviceConsumer.version();
                         field.setAccessible(true);
                         field.set(bean, createService(field.getType(), version));
                     }

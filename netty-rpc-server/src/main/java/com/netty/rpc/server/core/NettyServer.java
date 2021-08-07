@@ -1,6 +1,6 @@
 package com.netty.rpc.server.core;
 
-import com.netty.rpc.annotation.NettyRpcService;
+import com.netty.rpc.annotation.ServiceProvider;
 import com.netty.rpc.server.registry.ServiceRegistry;
 import com.netty.rpc.util.ServiceUtil;
 import com.netty.rpc.util.ThreadPoolUtil;
@@ -38,7 +38,7 @@ public class NettyServer implements Server {
     public void addService(String interfaceName, String version, Object serviceBean) {
         log.info(
                 "Adding service, interface: {}, version: {}, bean：{}", interfaceName, version, serviceBean);
-        String serviceKey = ServiceUtil.makeServiceKey(interfaceName, version);
+        String serviceKey = ServiceUtil.generateServiceKey(interfaceName, version);
         serviceMap.put(serviceKey, serviceBean);
     }
 
@@ -46,9 +46,9 @@ public class NettyServer implements Server {
         if (serviceBean == null) {
             return;
         }
-        NettyRpcService nettyRpcService = serviceBean.getClass().getAnnotation(NettyRpcService.class);
-        String interfaceName = nettyRpcService.value().getName();
-        String version = nettyRpcService.version();
+        ServiceProvider serviceProvider = serviceBean.getClass().getAnnotation(ServiceProvider.class);
+        String interfaceName = serviceProvider.value().getName();
+        String version = serviceProvider.version();
         addService(interfaceName, version, serviceBean);
     }
 

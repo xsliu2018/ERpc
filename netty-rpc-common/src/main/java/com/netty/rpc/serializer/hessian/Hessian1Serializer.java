@@ -3,12 +3,20 @@ package com.netty.rpc.serializer.hessian;
 import com.caucho.hessian.io.HessianInput;
 import com.caucho.hessian.io.HessianOutput;
 import com.netty.rpc.serializer.Serializer;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class Hessian1Serializer extends Serializer {
+/**
+ * hessian序列化
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/1:19 上午
+ * @author: lxs
+ */
+@Slf4j
+public class Hessian1Serializer implements Serializer {
 
     @Override
     public <T> byte[] serialize(T obj) {
@@ -17,20 +25,19 @@ public class Hessian1Serializer extends Serializer {
         try {
             ho.writeObject(obj);
             ho.flush();
-            byte[] result = os.toByteArray();
-            return result;
+            return os.toByteArray();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
             try {
                 ho.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                log.error("something goes wrong " + e.getMessage());
             }
             try {
                 os.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                log.error("something goes wrong " + e.getMessage());
             }
         }
     }
@@ -40,20 +47,19 @@ public class Hessian1Serializer extends Serializer {
         ByteArrayInputStream is = new ByteArrayInputStream(bytes);
         HessianInput hi = new HessianInput(is);
         try {
-            Object result = hi.readObject();
-            return result;
+            return hi.readObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
             try {
                 hi.close();
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                log.error("something goes wrong " + e.getMessage());
             }
             try {
                 is.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                log.error("something goes wrong " + e.getMessage());
             }
         }
     }

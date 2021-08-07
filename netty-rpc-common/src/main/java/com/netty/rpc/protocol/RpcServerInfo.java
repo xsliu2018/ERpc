@@ -1,6 +1,6 @@
 package com.netty.rpc.protocol;
 
-import com.netty.rpc.util.JsonUtil;
+import com.netty.rpc.util.JSONUtil;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -21,11 +21,11 @@ public class RpcServerInfo implements Serializable {
     private List<RpcServiceInfo> serviceInfoList;
 
     public String toJson() {
-        return JsonUtil.objectToJson(this);
+        return JSONUtil.objectToJson(this);
     }
 
     public static RpcServerInfo fromJson(String json) {
-        return JsonUtil.jsonToObject(json, RpcServerInfo.class);
+        return JSONUtil.jsonToObject(json, RpcServerInfo.class);
     }
 
     @Override

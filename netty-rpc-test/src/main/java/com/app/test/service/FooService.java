@@ -1,12 +1,12 @@
 package com.app.test.service;
 
-import com.netty.rpc.annotation.RpcAutowired;
+import com.netty.rpc.annotation.ServiceConsumer;
 
 public class FooService implements Foo {
-    @RpcAutowired(version = "1.0")
+    @ServiceConsumer(version = "1.0")
     private HelloService helloService1;
 
-    @RpcAutowired(version = "2.0")
+    @ServiceConsumer(version = "2.0")
     private HelloService helloService2;
 
     @Override

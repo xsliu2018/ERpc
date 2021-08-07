@@ -7,23 +7,26 @@ import com.netty.rpc.codec.RpcRequest;
 import com.netty.rpc.codec.RpcResponse;
 import org.objenesis.strategy.StdInstantiatorStrategy;
 
+/**
+ * kryo工厂
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/1:19 上午
+ * @author: lxs
+ */
 public class KryoPoolFactory {
     private static volatile KryoPoolFactory poolFactory = null;
 
-    private KryoFactory factory = new KryoFactory() {
-        @Override
-        public Kryo create() {
-            Kryo kryo = new Kryo();
-            kryo.setReferences(false);
-            kryo.register(RpcRequest.class);
-            kryo.register(RpcResponse.class);
-            Kryo.DefaultInstantiatorStrategy strategy = (Kryo.DefaultInstantiatorStrategy) kryo.getInstantiatorStrategy();
-            strategy.setFallbackInstantiatorStrategy(new StdInstantiatorStrategy());
-            return kryo;
-        }
+    private final KryoFactory factory = () -> {
+        Kryo kryo = new Kryo();
+        kryo.setReferences(false);
+        kryo.register(RpcRequest.class);
+        kryo.register(RpcResponse.class);
+        Kryo.DefaultInstantiatorStrategy strategy = (Kryo.DefaultInstantiatorStrategy) kryo.getInstantiatorStrategy();
+        strategy.setFallbackInstantiatorStrategy(new StdInstantiatorStrategy());
+        return kryo;
     };
 
-    private KryoPool pool = new KryoPool.Builder(factory).build();
+    private final KryoPool pool = new KryoPool.Builder(factory).build();
 
     private KryoPoolFactory() {
     }

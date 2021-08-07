@@ -14,8 +14,15 @@ import org.apache.zookeeper.Watcher;
 
 import java.util.List;
 
+/**
+ * zk客户端
+ *
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/2:21 下午
+ * @author: lxs
+ */
 public class CuratorClient {
-    private CuratorFramework client;
+    private final CuratorFramework client;
 
     public CuratorClient(String connectString, String namespace, int sessionTimeout, int connectionTimeout) {
         client = CuratorFrameworkFactory.builder().namespace(namespace).connectString(connectString)

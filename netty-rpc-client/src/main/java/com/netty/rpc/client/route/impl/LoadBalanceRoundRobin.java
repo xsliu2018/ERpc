@@ -9,15 +9,16 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Round robin load balance
- * Created by luxiaoxun on 2020-08-01.
+ * 轮训负载均衡实现
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/0:21 上午
+ * @author: lxs
  */
 public class LoadBalanceRoundRobin implements LoadBalance {
-    private AtomicInteger roundRobin = new AtomicInteger(0);
+    private final AtomicInteger roundRobin = new AtomicInteger(0);
 
     public RpcServerInfo doRoute(List<RpcServerInfo> addressList) {
         int size = addressList.size();
-        // Round robin
         int index = (roundRobin.getAndAdd(1) + size) % size;
         return addressList.get(index);
     }

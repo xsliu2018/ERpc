@@ -1,11 +1,17 @@
 package com.netty.rpc.protocol;
 
-import com.netty.rpc.util.JsonUtil;
+import com.netty.rpc.util.JSONUtil;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * 服务数据，包含名称，版本等
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/7/4:21 下午
+ * @author: lxs
+ */
 @Data
 public class RpcServiceInfo implements Serializable {
     private String serviceName;
@@ -30,7 +36,7 @@ public class RpcServiceInfo implements Serializable {
     }
 
     public String toJson() {
-        return JsonUtil.objectToJson(this);
+        return JSONUtil.objectToJson(this);
     }
 
     @Override

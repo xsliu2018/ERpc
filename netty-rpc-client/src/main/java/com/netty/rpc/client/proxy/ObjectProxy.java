@@ -18,7 +18,7 @@ import java.util.UUID;
  * @author: lxs
  */
 @Slf4j
-public class ObjectProxy<T, P>
+public class ObjectProxy<T>
     implements InvocationHandler, RpcService<T, SerializableMethod<T>> {
   private final Class<T> clazz;
   private final String version;
@@ -67,7 +67,7 @@ public class ObjectProxy<T, P>
       }
     }
 
-    String serviceKey = ServiceUtil.makeServiceKey(method.getDeclaringClass().getName(), version);
+    String serviceKey = ServiceUtil.generateServiceKey(method.getDeclaringClass().getName(), version);
     RpcClientHandler handler = ConnectionManager.getInstance().chooseHandler(serviceKey);
     RpcFuture rpcFuture = handler.sendRequest(request);
     return rpcFuture.get();
@@ -75,7 +75,7 @@ public class ObjectProxy<T, P>
 
   @Override
   public RpcFuture call(String funcName, Object... args) throws Exception {
-    String serviceKey = ServiceUtil.makeServiceKey(this.clazz.getName(), version);
+    String serviceKey = ServiceUtil.generateServiceKey(this.clazz.getName(), version);
     RpcClientHandler handler = ConnectionManager.getInstance().chooseHandler(serviceKey);
     RpcRequest request = createRequest(this.clazz.getName(), funcName, args);
     return handler.sendRequest(request);
@@ -84,7 +84,7 @@ public class ObjectProxy<T, P>
   @Override
   public RpcFuture call(SerializableMethod<T> tSerializableMethod, Object... args)
       throws Exception {
-    String serviceKey = ServiceUtil.makeServiceKey(this.clazz.getName(), version);
+    String serviceKey = ServiceUtil.generateServiceKey(this.clazz.getName(), version);
     RpcClientHandler handler = ConnectionManager.getInstance().chooseHandler(serviceKey);
     RpcRequest request = createRequest(this.clazz.getName(), tSerializableMethod.getName(), args);
     return handler.sendRequest(request);

@@ -60,7 +60,7 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest> {
     private Object handle(RpcRequest request) throws Throwable {
         String className = request.getClassName();
         String version = request.getVersion();
-        String serviceKey = ServiceUtil.makeServiceKey(className, version);
+        String serviceKey = ServiceUtil.generateServiceKey(className, version);
         Object serviceBean = handlerMap.get(serviceKey);
         if (serviceBean == null) {
             log.error("Can not find service implement with interface name: {} and version: {}", className, version);

@@ -7,11 +7,13 @@ import com.netty.rpc.protocol.RpcServerInfo;
 import java.util.*;
 
 /**
- * Random load balance
- * Created by luxiaoxun on 2020-08-01.
+ * 随机选择的负载均衡实现
+ * @description: <a href="mailto:xsl2011@outlook.com" />
+ * @time: 2021/8/8/0:37 上午
+ * @author: lxs
  */
 public class LoadBalanceRandom implements LoadBalance {
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public RpcServerInfo doRoute(List<RpcServerInfo> addressList) {
         int size = addressList.size();
