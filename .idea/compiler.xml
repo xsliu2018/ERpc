@@ -7,10 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="erpc-test" />
         <module name="e-rpc-test" />
+        <module name="erpc-core" />
         <module name="e-rpc-client" />
+        <module name="netty-rpc-client" />
         <module name="e-rpc-core" />
         <module name="e-rpc-server" />
+        <module name="erpc-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +23,10 @@
       <module name="e-rpc-server" target="1.8" />
       <module name="e-rpc-test" target="1.8" />
       <module name="ERpc" target="1.8" />
+      <module name="erpc-core" target="1.8" />
+      <module name="erpc-server" target="1.8" />
+      <module name="erpc-test" target="1.8" />
+      <module name="netty-rpc-client" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

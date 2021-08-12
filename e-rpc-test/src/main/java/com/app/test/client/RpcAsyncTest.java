@@ -1,9 +1,10 @@
 package com.app.test.client;
 
-import com.netty.rpc.client.handler.RpcFuture;
-import com.netty.rpc.client.RpcClient;
-import com.netty.rpc.client.proxy.RpcService;
+
 import com.app.test.service.HelloService;
+import top.xsliu.erpc.client.RpcClient;
+import top.xsliu.erpc.client.handler.RpcFuture;
+import top.xsliu.erpc.client.proxy.RpcService;
 
 import java.util.concurrent.TimeUnit;
 

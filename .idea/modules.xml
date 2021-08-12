@@ -7,6 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/netty-rpc-common/e-rpc-core.iml" filepath="$PROJECT_DIR$/netty-rpc-common/e-rpc-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty-rpc-server/e-rpc-server.iml" filepath="$PROJECT_DIR$/netty-rpc-server/e-rpc-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty-rpc-test/e-rpc-test.iml" filepath="$PROJECT_DIR$/netty-rpc-test/e-rpc-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e-rpc-core/erpc-core.iml" filepath="$PROJECT_DIR$/e-rpc-core/erpc-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e-rpc-server/erpc-server.iml" filepath="$PROJECT_DIR$/e-rpc-server/erpc-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e-rpc-test/erpc-test.iml" filepath="$PROJECT_DIR$/e-rpc-test/erpc-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e-rpc-client/netty-rpc-client.iml" filepath="$PROJECT_DIR$/e-rpc-client/netty-rpc-client.iml" />
     </modules>
   </component>
 </project>

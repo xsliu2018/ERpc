@@ -1,9 +1,9 @@
 package top.xsliu.erpc.server.core;
 
-import com.netty.rpc.annotation.ServiceProvider;
+import top.xsliu.erpc.core.annotation.ServiceProvider;
 import top.xsliu.erpc.server.registry.ServiceRegistry;
-import com.netty.rpc.util.ServiceUtil;
-import com.netty.rpc.util.ThreadPoolUtil;
+import top.xsliu.erpc.core.util.ServiceUtil;
+import top.xsliu.erpc.core.util.ThreadPoolUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;

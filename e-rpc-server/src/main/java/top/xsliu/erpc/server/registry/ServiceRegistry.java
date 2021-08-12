@@ -1,12 +1,13 @@
 package top.xsliu.erpc.server.registry;
 
-import com.netty.rpc.config.Constant;
-import com.netty.rpc.protocol.RpcServerInfo;
-import com.netty.rpc.protocol.RpcServiceInfo;
-import com.netty.rpc.util.ServiceUtil;
-import com.netty.rpc.zookeeper.CuratorClient;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.state.ConnectionState;
+import top.xsliu.erpc.core.config.Constant;
+import top.xsliu.erpc.core.protocol.RpcServerInfo;
+import top.xsliu.erpc.core.protocol.RpcServiceInfo;
+import top.xsliu.erpc.core.util.ServiceUtil;
+import top.xsliu.erpc.core.zookeeper.CuratorClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +57,7 @@ public class ServiceRegistry {
             String serviceData = rpcServerInfo.toJson();
             byte[] bytes = serviceData.getBytes();
             String path = Constant.ZK_DATA_PATH + "-" + rpcServerInfo.hashCode();
-            path = this.curatorClient.createPathData(path, bytes);
+            path = curatorClient.createPathData(path, bytes);
             pathList.add(path);
             log.info("Register {} new service, host: {}, port: {}", serviceInfoList.size(), host, port);
         } catch (Exception e) {

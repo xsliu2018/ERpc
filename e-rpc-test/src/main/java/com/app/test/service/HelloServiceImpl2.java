@@ -1,6 +1,7 @@
 package com.app.test.service;
 
-import com.netty.rpc.annotation.ServiceProvider;
+
+import top.xsliu.erpc.core.annotation.ServiceProvider;
 
 @ServiceProvider(value = HelloService.class, version = "2.0")
 public class HelloServiceImpl2 implements HelloService {

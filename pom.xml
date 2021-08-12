@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.netty.rpc</groupId>
-    <artifactId>NettyRpc</artifactId>
+    <groupId>top.xsliu.erpc</groupId>
+    <artifactId>ERpc</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>netty-rpc-server</module>
-        <module>netty-rpc-client</module>
-        <module>netty-rpc-common</module>
-        <module>netty-rpc-test</module>
+        <module>erpc-server</module>
+        <module>erpc-client</module>
+        <module>erpc-core</module>
+        <module>erpc-test</module>
     </modules>
 
     <properties>

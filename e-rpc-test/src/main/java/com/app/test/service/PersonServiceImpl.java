@@ -1,6 +1,8 @@
 package com.app.test.service;
 
-import com.netty.rpc.annotation.ServiceProvider;
+
+
+import top.xsliu.erpc.core.annotation.ServiceProvider;
 
 import java.util.ArrayList;
 import java.util.List;

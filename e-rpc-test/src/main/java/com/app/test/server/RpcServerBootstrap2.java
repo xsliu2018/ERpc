@@ -1,9 +1,10 @@
 package com.app.test.server;
 
 import com.app.test.service.*;
-import com.netty.rpc.server.RpcServer;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import top.xsliu.erpc.server.RpcServer;
 
 public class RpcServerBootstrap2 {
     private static final Logger logger = LoggerFactory.getLogger(RpcServerBootstrap2.class);

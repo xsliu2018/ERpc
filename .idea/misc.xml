@@ -4,6 +4,10 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/e-rpc-test/pom.xml" />
+        <option value="$PROJECT_DIR$/e-rpc-server/pom.xml" />
+        <option value="$PROJECT_DIR$/e-rpc-core/pom.xml" />
+        <option value="$PROJECT_DIR$/e-rpc-client/pom.xml" />
       </list>
     </option>
   </component>

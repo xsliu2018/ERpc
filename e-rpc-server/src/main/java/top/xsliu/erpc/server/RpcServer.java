@@ -1,6 +1,7 @@
 package top.xsliu.erpc.server;
 
-import com.netty.rpc.annotation.ServiceProvider;
+
+import top.xsliu.erpc.core.annotation.ServiceProvider;
 import top.xsliu.erpc.server.core.NettyServer;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.BeansException;

@@ -1,16 +1,15 @@
 package top.xsliu.erpc.client;
 
-import top.xsliu.erpc.core.annotation.ServiceConsumer;
-import top.xsliu.erpc.client.proxy.RpcService;
-import top.xsliu.erpc.client.proxy.ObjectProxy;
-import top.xsliu.erpc.client.connection.ConnectionManager;
-import top.xsliu.erpc.client.discovery.ServiceDiscovery;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import top.xsliu.erpc.client.connection.ConnectionManager;
+import top.xsliu.erpc.client.discovery.ServiceDiscovery;
+import top.xsliu.erpc.client.proxy.ObjectProxy;
+import top.xsliu.erpc.client.proxy.RpcService;
+import top.xsliu.erpc.core.annotation.ServiceConsumer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Proxy;
@@ -25,8 +24,8 @@ import java.util.concurrent.TimeUnit;
  * @time: 2021/8/7/6:21 下午
  * @author: lxs
  */
+@Slf4j
 public class RpcClient implements ApplicationContextAware, DisposableBean {
-    private static final Logger logger = LoggerFactory.getLogger(RpcClient.class);
 
     private final ServiceDiscovery serviceDiscovery;
     private static final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
@@ -80,7 +79,7 @@ public class RpcClient implements ApplicationContextAware, DisposableBean {
                     }
                 }
             } catch (IllegalAccessException e) {
-                logger.error(e.toString());
+                log.error(e.toString());
             }
         }
     }

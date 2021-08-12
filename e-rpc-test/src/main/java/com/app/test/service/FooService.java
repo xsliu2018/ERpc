@@ -1,6 +1,7 @@
 package com.app.test.service;
 
-import com.netty.rpc.annotation.ServiceConsumer;
+
+import top.xsliu.erpc.core.annotation.ServiceConsumer;
 
 public class FooService implements Foo {
     @ServiceConsumer(version = "1.0")
