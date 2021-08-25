@@ -1,18 +1,15 @@
-# NettyRpc
-An RPC framework based on Netty, ZooKeeper and Spring  
-中文详情：[Chinese Details](http://www.cnblogs.com/luxiaoxun/p/5272384.html)
+# ERpc
+A light RPC framework based on Netty, ZooKeeper and Spring
 ### Features:
 * Simple code and framework
 * Service registry/discovery support by ZooKeeper
 * High availability, load balance and failover
-* Support different load balance strategy
+* Support different load balance strategy,random, consistentHash,round
 * Support asynchronous/synchronous call
 * Support different versions of service
 * Support different serializer/deserializer
 * Dead TCP connection detecting with heartbeat
-### Design:
-![design](https://github.com/luxiaoxun/NettyRpc/blob/master/picture/NettyRpc-design.png)
-### How to use (netty-rpc-test)
+### How to use (e-rpc-test)
 1. Define an interface:
     ```  
     public interface HelloService { 
@@ -20,9 +17,9 @@ An RPC framework based on Netty, ZooKeeper and Spring
         String hello(Person person);
     }
     ```  
-2. Implement the interface with annotation @NettyRpcService:
+2. Implement the interface with annotation @ServiceProvider:
     ```  
-    @NettyRpcService(HelloService.class, version = "1.0")
+    @ServiceProvider(HelloService.class, version = "1.0")
     public class HelloServiceImpl implements HelloService {
         public HelloServiceImpl(){}
 	
@@ -42,8 +39,7 @@ An RPC framework based on Netty, ZooKeeper and Spring
    For example: zookeeper is running on 127.0.0.1:2181
 
 4. Start server:
-   1. Start server with spring config: RpcServerBootstrap
-   2. Start server without spring config: RpcServerBootstrap2
+   Start server with spring config: RpcServerBootstrap
 
 5. Call the service:
     1. Use the client:
@@ -59,13 +55,13 @@ An RPC framework based on Netty, ZooKeeper and Spring
    	RPCFuture helloFuture = client.call("hello", "World");
    	String result = (String) helloFuture.get(3000, TimeUnit.MILLISECONDS);
 	``` 
-    2. Use annotation @RpcAutowired:
+    2. Use annotation @ServiceConsumer:
     ``` 
     public class Baz implements Foo {
-        @RpcAutowired(version = "1.0")
+        @ServiceConsumer(version = "1.0")
         private HelloService helloService1;
            
-        @RpcAutowired(version = "2.0")
+        @ServiceConsumer(version = "2.0")
         private HelloService helloService2;
            
         @Override
